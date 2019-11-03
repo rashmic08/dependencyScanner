@@ -7,14 +7,11 @@ const NetworkService = {
             headers: { 
                 accept: 'application/json',
                 'content-type':'multipart/form-data',          
-                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI3Mjk0ODcsImV4cCI6MTU3MjczMzA4Nywicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.IAcR6Bp881fPxJCSjmOIJC2NHBMfvsb3myd7ND94bI4EWJffr8Ps-Vf48LAt2DIAirX4EriiKK1XtPXJdjvP0m8BEM1PGTIvjv0BdMlr3iWavcg58P2HMIqJWsXLL1lnWZk3KKtf-A67WjwZOtw30Fg96b2umVUUg6Zr-BKNtdDXlipIM51JVlbVlCtenWkHqmCJGLijU0s-OcgSHB6gqazt0Bzz50td7uoaXh_Lpy08ZXH4YVD5frBFFIcC0VL3SzL5Q1IcHgeEu4kdrQv6QodqFGuVAU6ORP537XdGzNDjjKKn8RSuayaKbkjWBc4fl1AHS_YTn-SYIlqffE2kbTxZt9rgJ4c2Q_52pghCwPO413nNyVJ6HWev_NrwNby8ZjxLag51SmgzWE6QYfoBcC9MbAnVLJJtvO9UnfaCkACnWRoEaPG1MzOxVAYwPlGmM4mZfmskmfoQmZIgeWWJW3eqQ8QZkxQUlMD30BTVH9lVFKxoGiEmiYTaBDWH9Mro4HC6x5qti2Ag-hO_0S3TcOdnoQBCfE87P5N-qUI4zeJgcgts9hcjhTfTR9w55jB9B-6UReLw59pEDsKFKhK7d7OFR9712zyFDJIHnP1E-weRJRHP_qnhOiWNF3ebDrc9bvfpxlPO4fbPXvjd5KjOlvqgIqxAtVAxj59x5tbZvTc',
+                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI3OTk4MDksImV4cCI6MTU3MjgwMzQwOSwicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.MdCQs5YfrbrM49v_zXfg6XKnwPnmTMotm_40B2KDICkIEgIlvBjOBPKye63ji4hTjEnMJ4yuVfyDAGix6Jq6ZWMh59LLGuP9__2huiEb9KGPOsuc58M9mzXp54wV4yfQUcotn7h0H5XIYRMdfPXXqrtEJIS1e7XPjbZ-EdgOWMb36_f2T-yqcOQALw28m9tUEIKraA6xV9EN_0-wQX-K-RHGekPhvzPnbL2fWa1nNUey5kyLU4OIDj2lLnavRJBzCNTL6_e_19POtKnu-TVwjN-laR3Kqymmj41ZcG6rM-b_mN05wdTrjV-qx3Ml1zVEb_tXAu_ewkKMVp6-S_3H2_QxEH4Sqj_sxB8beaPJdv95aXLmlH-6ho4E2UJJ2WHsVSl73LYaPpsqKOKd_py4052VRiY7tnPOgq3adfdPiq56t8a-dRBhLmjDpnVI_EiAMdTAXCYR_nPtlOpGDL175ohWFS2YP04dtZNARwNT0gk0weF7UrZAO0VcBfI4ZG-WmQ_spiMdy4UADx_WIOxjKUEgT2MnukFdW-OanljC_BgWehlNPG7rduYuQeZ36AVBE4rQCMVBhGQVrzoW6clGaNqxFkPX4AS_ky27M3qbG1quVjhxukQCp3cWciaItRtmWHiaNFWLM5mHGRjHd7BnZfiZda3A-ccBzMpQDWjAQRA',
             }
-        }).then(x => {
-            console.log("hhshsh", x);
-        return x.data;
-        }).then(item => {                 
-                return item;
-            });
+        }).then(x =>x.data).then(data => {                 
+            return data;
+        });
     },
     uploadId: function uploadId(formData) {        
         return axios.post('https://cors-anywhere.herokuapp.com/https://app.debricked.com/api/1.0/open/finishes/dependencies/files/uploads', 
@@ -23,7 +20,7 @@ const NetworkService = {
             headers: { 
                  accept: 'application/json',
                 'content-type':'multipart/form-data',          
-                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI3Mjk0ODcsImV4cCI6MTU3MjczMzA4Nywicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.IAcR6Bp881fPxJCSjmOIJC2NHBMfvsb3myd7ND94bI4EWJffr8Ps-Vf48LAt2DIAirX4EriiKK1XtPXJdjvP0m8BEM1PGTIvjv0BdMlr3iWavcg58P2HMIqJWsXLL1lnWZk3KKtf-A67WjwZOtw30Fg96b2umVUUg6Zr-BKNtdDXlipIM51JVlbVlCtenWkHqmCJGLijU0s-OcgSHB6gqazt0Bzz50td7uoaXh_Lpy08ZXH4YVD5frBFFIcC0VL3SzL5Q1IcHgeEu4kdrQv6QodqFGuVAU6ORP537XdGzNDjjKKn8RSuayaKbkjWBc4fl1AHS_YTn-SYIlqffE2kbTxZt9rgJ4c2Q_52pghCwPO413nNyVJ6HWev_NrwNby8ZjxLag51SmgzWE6QYfoBcC9MbAnVLJJtvO9UnfaCkACnWRoEaPG1MzOxVAYwPlGmM4mZfmskmfoQmZIgeWWJW3eqQ8QZkxQUlMD30BTVH9lVFKxoGiEmiYTaBDWH9Mro4HC6x5qti2Ag-hO_0S3TcOdnoQBCfE87P5N-qUI4zeJgcgts9hcjhTfTR9w55jB9B-6UReLw59pEDsKFKhK7d7OFR9712zyFDJIHnP1E-weRJRHP_qnhOiWNF3ebDrc9bvfpxlPO4fbPXvjd5KjOlvqgIqxAtVAxj59x5tbZvTc',
+                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI3OTk4MDksImV4cCI6MTU3MjgwMzQwOSwicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.MdCQs5YfrbrM49v_zXfg6XKnwPnmTMotm_40B2KDICkIEgIlvBjOBPKye63ji4hTjEnMJ4yuVfyDAGix6Jq6ZWMh59LLGuP9__2huiEb9KGPOsuc58M9mzXp54wV4yfQUcotn7h0H5XIYRMdfPXXqrtEJIS1e7XPjbZ-EdgOWMb36_f2T-yqcOQALw28m9tUEIKraA6xV9EN_0-wQX-K-RHGekPhvzPnbL2fWa1nNUey5kyLU4OIDj2lLnavRJBzCNTL6_e_19POtKnu-TVwjN-laR3Kqymmj41ZcG6rM-b_mN05wdTrjV-qx3Ml1zVEb_tXAu_ewkKMVp6-S_3H2_QxEH4Sqj_sxB8beaPJdv95aXLmlH-6ho4E2UJJ2WHsVSl73LYaPpsqKOKd_py4052VRiY7tnPOgq3adfdPiq56t8a-dRBhLmjDpnVI_EiAMdTAXCYR_nPtlOpGDL175ohWFS2YP04dtZNARwNT0gk0weF7UrZAO0VcBfI4ZG-WmQ_spiMdy4UADx_WIOxjKUEgT2MnukFdW-OanljC_BgWehlNPG7rduYuQeZ36AVBE4rQCMVBhGQVrzoW6clGaNqxFkPX4AS_ky27M3qbG1quVjhxukQCp3cWciaItRtmWHiaNFWLM5mHGRjHd7BnZfiZda3A-ccBzMpQDWjAQRA',
             }
         }).then(x => x.status).then(status => {              
                 return status;
@@ -35,7 +32,7 @@ const NetworkService = {
             headers: { 
                  accept: 'application/json',
                 'content-type':'multipart/form-data',          
-                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI3Mjk0ODcsImV4cCI6MTU3MjczMzA4Nywicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.IAcR6Bp881fPxJCSjmOIJC2NHBMfvsb3myd7ND94bI4EWJffr8Ps-Vf48LAt2DIAirX4EriiKK1XtPXJdjvP0m8BEM1PGTIvjv0BdMlr3iWavcg58P2HMIqJWsXLL1lnWZk3KKtf-A67WjwZOtw30Fg96b2umVUUg6Zr-BKNtdDXlipIM51JVlbVlCtenWkHqmCJGLijU0s-OcgSHB6gqazt0Bzz50td7uoaXh_Lpy08ZXH4YVD5frBFFIcC0VL3SzL5Q1IcHgeEu4kdrQv6QodqFGuVAU6ORP537XdGzNDjjKKn8RSuayaKbkjWBc4fl1AHS_YTn-SYIlqffE2kbTxZt9rgJ4c2Q_52pghCwPO413nNyVJ6HWev_NrwNby8ZjxLag51SmgzWE6QYfoBcC9MbAnVLJJtvO9UnfaCkACnWRoEaPG1MzOxVAYwPlGmM4mZfmskmfoQmZIgeWWJW3eqQ8QZkxQUlMD30BTVH9lVFKxoGiEmiYTaBDWH9Mro4HC6x5qti2Ag-hO_0S3TcOdnoQBCfE87P5N-qUI4zeJgcgts9hcjhTfTR9w55jB9B-6UReLw59pEDsKFKhK7d7OFR9712zyFDJIHnP1E-weRJRHP_qnhOiWNF3ebDrc9bvfpxlPO4fbPXvjd5KjOlvqgIqxAtVAxj59x5tbZvTc',
+                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI3OTk4MDksImV4cCI6MTU3MjgwMzQwOSwicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.MdCQs5YfrbrM49v_zXfg6XKnwPnmTMotm_40B2KDICkIEgIlvBjOBPKye63ji4hTjEnMJ4yuVfyDAGix6Jq6ZWMh59LLGuP9__2huiEb9KGPOsuc58M9mzXp54wV4yfQUcotn7h0H5XIYRMdfPXXqrtEJIS1e7XPjbZ-EdgOWMb36_f2T-yqcOQALw28m9tUEIKraA6xV9EN_0-wQX-K-RHGekPhvzPnbL2fWa1nNUey5kyLU4OIDj2lLnavRJBzCNTL6_e_19POtKnu-TVwjN-laR3Kqymmj41ZcG6rM-b_mN05wdTrjV-qx3Ml1zVEb_tXAu_ewkKMVp6-S_3H2_QxEH4Sqj_sxB8beaPJdv95aXLmlH-6ho4E2UJJ2WHsVSl73LYaPpsqKOKd_py4052VRiY7tnPOgq3adfdPiq56t8a-dRBhLmjDpnVI_EiAMdTAXCYR_nPtlOpGDL175ohWFS2YP04dtZNARwNT0gk0weF7UrZAO0VcBfI4ZG-WmQ_spiMdy4UADx_WIOxjKUEgT2MnukFdW-OanljC_BgWehlNPG7rduYuQeZ36AVBE4rQCMVBhGQVrzoW6clGaNqxFkPX4AS_ky27M3qbG1quVjhxukQCp3cWciaItRtmWHiaNFWLM5mHGRjHd7BnZfiZda3A-ccBzMpQDWjAQRA',
             }
         }).then(x => x).then(status => {             
               return status;

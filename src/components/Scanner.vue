@@ -17,10 +17,10 @@
       <!--SUCCESS-->
       <div v-if="isSuccess">
         <themed-label class="text-center">Uploaded {{ uploadedFiles.length }} file(s) successfully.</themed-label>
-        <pre style="background-color:black">
+        <pre class="pre">
             <div><themed-text>Please wait, file(s) are getting scanned....</themed-text>
             <themed-label>Progress: </themed-label><b-progress :value="uploadPercentage" :max="100" show-progress :animated="animate"></b-progress></div>           
-          </pre>
+        </pre>
         <div v-if="uploadPercentage==100">
           <ul class="list-unstyled">
             <li v-for="item in finalArray">
@@ -30,7 +30,7 @@
           </ul>
           <div style="text-align: right !important;">
             <themed-btn>
-              <p @click="reset()">Upload again</p>
+              <div @click="reset()">Upload again</div>
             </themed-btn>
           </div>
         </div>
@@ -44,8 +44,8 @@
             <div><themed-label>Error message: </themed-label>{{ uploadError.data.message }}</p></div>
           </pre>
         <div style="text-align: right !important;">
-          <themed-btn>
-            <p @click="reset()">Try again</p>
+          <themed-btn >
+           <div @click="reset()">Try again</div>
           </themed-btn>
         </div>
       </div>
@@ -102,7 +102,7 @@ export default {
           
           var formData = new FormData();
           formData.append("ciUploadId", x.ciUploadId)
-          NetworkService.uploadId(formData).then(wait(100)).then(status => {
+          NetworkService.uploadId(formData).then(status => {
             var that = this;
             if (status === 204) {
               var loop = function() {
@@ -117,7 +117,7 @@ export default {
                     that.animate = false
                     return;
                   } else {
-                    wait(3000)
+                    wait(1000)
                     loop();
                   }
 
@@ -196,5 +196,14 @@ export default {
 
 #scan {
   margin-top: 100px;
+}
+
+.pre{
+    font-size: 0.875em;
+    overflow-x: auto;
+    padding: 1.25rem 1.5rem;
+    white-space: pre;
+    word-wrap: normal;
+    background-color: black;
 }
 </style>
