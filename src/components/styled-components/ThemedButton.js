@@ -14,6 +14,7 @@ const ThemedButton = styled('button', themeProps)`
   padding-top: calc(0.5em - 1px);
   text-align: center;
   white-space: nowrap;
+  margin-bottom:10px;
 `;
 
 export default ThemedButton;

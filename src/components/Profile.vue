@@ -2,8 +2,8 @@
   <div id="profile">
     <b-container>    
       <div class="row justify-content-center">
-          <div class="col-sm-6 col-md-6 col-lg-4 column"><theme-picker class="column"/></div>
-          <div class="col-sm-6 col-md-6 col-lg-8">
+          <div class="col-sm-12 col-md-6 col-lg-4 column"><theme-picker class="column"/></div>
+          <div class="col-sm-12 col-md-6 col-lg-8">
             <themed-title>Nicole Pearson</themed-title>
             <themed-label>About</themed-label><p>Web designer/UI</p>
             <themed-label>Hobbies</themed-label>
