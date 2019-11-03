@@ -17,18 +17,16 @@
       <!--SUCCESS-->
       <div v-if="isSuccess">
         <themed-label class="text-center">Uploaded {{ uploadedFiles.length }} file(s) successfully.</themed-label>
-        <pre class="pre">
-            <div><themed-text>Please wait, file(s) are getting scanned....</themed-text>
-            <themed-label>Progress: </themed-label><b-progress :value="uploadPercentage" :max="100" show-progress :animated="animate"></b-progress></div>           
-        </pre>
-        <div v-if="uploadPercentage==100">
-          <ul class="list-unstyled">
-            <li v-for="item in finalArray">
+        <themed-text class="text-center">Please wait, file(s) are getting scanned....</themed-text>
+        <div v-for="item in finalArray" style="margin-top: 20px">          
+          <themed-label>Progress(%)</themed-label>           
+          <b-progress :value="item.progress" :max="100" show-progress :animated="animate"></b-progress>
+          </b-progress>       
+          <div v-if="item.progress==100" style="margin-top: 20px">            
               <themed-label>vulnerabilities Found: {{item.vulnerabilitiesFound}}</themed-label>
               <themed-label>unaffectedVulnerabilities Found: {{item.unaffectedVulnerabilitiesFound}}</themed-label>
-            </li>
-          </ul>
-          <div style="text-align: right !important;">
+          </div>
+          <div v-if="item.progress==100" style="text-align: right !important;margin-top: 20px">
             <themed-btn>
               <div @click="reset()">Upload again</div>
             </themed-btn>
@@ -38,14 +36,14 @@
       <!--FAILED-->
       <div v-if="isFailed">
         <themed-label class="text-center">File(s) upload failed</themed-label>
-        <pre>
+        <pre class="pre">
             <div><themed-label>Status: </themed-label><p>{{ uploadError.status }}</p></div>
             <div><themed-label>StatusText: </themed-label><p>{{ uploadError.statusText }}</p></div>
             <div><themed-label>Error message: </themed-label>{{ uploadError.data.message }}</p></div>
-          </pre>
+        </pre>
         <div style="text-align: right !important;">
           <themed-btn >
-           <div @click="reset()">Try again</div>
+            <div @click="reset()">Try again</div>
           </themed-btn>
         </div>
       </div>
@@ -68,7 +66,7 @@ export default {
       currentStatus: null,
       uploadFieldName: 'fileData',
       finalArray: [],
-      uploadPercentage: 0,
+      uploadPercentage: [],
       animate: true
     }
   },
@@ -99,38 +97,44 @@ export default {
       NetworkService.upload(formData).then(x => {       
           this.uploadedFiles = [].concat(x);
           this.currentStatus = STATUS_SUCCESS;
-          
-          var formData = new FormData();
-          formData.append("ciUploadId", x.ciUploadId)
-          NetworkService.uploadId(formData).then(status => {
-            var that = this;
-            if (status === 204) {
-              var loop = function() {
-                let promises = [];
-                promises.push(NetworkService.uploadIdStatus(x.ciUploadId));
-                Promise.all(promises).then(values => {
-                  that.finalArray = [].concat(values[0].data);
-                  if (values[0].data.progress !== -1) {
-                    that.uploadPercentage = values[0].data.progress
-                  }
-                  if (values[0].status === 200) {
-                    that.animate = false
-                    return;
-                  } else {
-                    wait(1000)
-                    loop();
-                  }
-
-                }).catch(err => {
-                  console.log("err--", err);
-                });
-              }
+          var idArray = [].concat(x);          
+          var idsPromises =[];          
+          for(var id in idArray){            
+            var formData = new FormData();
+            formData.append("ciUploadId", idArray[id].ciUploadId)
+            idsPromises.push(NetworkService.uploadId(formData));
+          }
+          Promise.all(idsPromises).then(values => {
+            let promises = [];
+            for(var val in values){
+              var that = this;
+              if (values[val] === 204) {             
+                var loop = function() {
+                  let promises = [];
+                  promises.push(NetworkService.uploadIdStatus(idArray[val].ciUploadId));
+                  Promise.all(promises).then(results => {  
+                    that.finalArray = [].concat(results[val].data);   
+                    var index = that.finalArray.findIndex((obj => obj.progress == -1));                    
+                    if(index!==-1){
+                      that.finalArray[index].progress = 0;  
+                    }                 
+                    if (results[val].status === 200) {   
+                      that.animate = false                   
+                      return;
+                    } else {
+                      wait(1000)
+                      loop();
+                    }
+                  }).catch(err => {
+                    console.log("err-->", err);
+                  });
+                }
               loop();
+              }
             }
-          })
-            .catch(err => {
-              console.log("error----", err);
-            });
+          }).catch(err => {
+            console.log("error-->", err);
+          });
         })
         .catch(err => {
           this.uploadError = err.response;

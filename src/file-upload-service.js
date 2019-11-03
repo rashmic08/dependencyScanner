@@ -7,22 +7,22 @@ const NetworkService = {
             headers: { 
                 accept: 'application/json',
                 'content-type':'multipart/form-data',          
-                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI3OTk4MDksImV4cCI6MTU3MjgwMzQwOSwicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.MdCQs5YfrbrM49v_zXfg6XKnwPnmTMotm_40B2KDICkIEgIlvBjOBPKye63ji4hTjEnMJ4yuVfyDAGix6Jq6ZWMh59LLGuP9__2huiEb9KGPOsuc58M9mzXp54wV4yfQUcotn7h0H5XIYRMdfPXXqrtEJIS1e7XPjbZ-EdgOWMb36_f2T-yqcOQALw28m9tUEIKraA6xV9EN_0-wQX-K-RHGekPhvzPnbL2fWa1nNUey5kyLU4OIDj2lLnavRJBzCNTL6_e_19POtKnu-TVwjN-laR3Kqymmj41ZcG6rM-b_mN05wdTrjV-qx3Ml1zVEb_tXAu_ewkKMVp6-S_3H2_QxEH4Sqj_sxB8beaPJdv95aXLmlH-6ho4E2UJJ2WHsVSl73LYaPpsqKOKd_py4052VRiY7tnPOgq3adfdPiq56t8a-dRBhLmjDpnVI_EiAMdTAXCYR_nPtlOpGDL175ohWFS2YP04dtZNARwNT0gk0weF7UrZAO0VcBfI4ZG-WmQ_spiMdy4UADx_WIOxjKUEgT2MnukFdW-OanljC_BgWehlNPG7rduYuQeZ36AVBE4rQCMVBhGQVrzoW6clGaNqxFkPX4AS_ky27M3qbG1quVjhxukQCp3cWciaItRtmWHiaNFWLM5mHGRjHd7BnZfiZda3A-ccBzMpQDWjAQRA',
+                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI4MTUyMTYsImV4cCI6MTU3MjgxODgxNiwicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.W3mdHO_o4RQJl8itQGLsrqBXk7Ki4oq2r4477psRp4YncLOjen9-mdGOUa8LpcnKohRZkB1gTOWijzWvIcUj3mGFEWNXIaqb79qst3CFNIsfR8DmYrMB6r98YD7oBho7w50QX3e7f6aCDEq6ZkuR3W7JCAO9KoZgrTHz5lDz7bMEMcEPfRQEtb2v8cqsdfWK9iNBiu7bLCyvkWbD0JbkN0R3ErY287K5QH3DZWDHqvofM-K7ACTfvHHyccG2YLOoCIVkjWhN6pZrzTbQJ3TIo7XVBx8ho6XVYjvO2TdG4EGgqJWhKkmcJyhIAkprkYI9_mrWh4tNikwsKAQV2S7CAIgFK7Qrg5vKDHtB91qRZrNFQJGpr3Cd8OHk-Li6Fzjs3bVVLEh0nD1C-Vjo64ns3SfZEcw2OxKDalDnAMspPfEEQ6ZbuLc7mCfs7s6Oo8r99kF97bkuh3RDjR3HvRPtGEjeuxLUeiKgroJCioaBGx4gW598b5cDWgOcfR2XK7UhEB3A2NsxD4XXGrd-o2uIaclg36tE3vLNqmfeuowwCUCKOAtStMt7wcZG0E0lOejb3c0B4-LxCLPvFJW14cd_bZ4NyTekdSmFilKLvPmmUmZghNoiwxtnzMR0ZZsRieP37UDnVTCdheow5mlrP9lMkL4268Dn1AD4aFD9XlpnepM',
             }
         }).then(x =>x.data).then(data => {                 
             return data;
         });
     },
-    uploadId: function uploadId(formData) {        
+    uploadId: function uploadId(formData) {       
         return axios.post('https://cors-anywhere.herokuapp.com/https://app.debricked.com/api/1.0/open/finishes/dependencies/files/uploads', 
         formData, 
         {
             headers: { 
                  accept: 'application/json',
                 'content-type':'multipart/form-data',          
-                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI3OTk4MDksImV4cCI6MTU3MjgwMzQwOSwicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.MdCQs5YfrbrM49v_zXfg6XKnwPnmTMotm_40B2KDICkIEgIlvBjOBPKye63ji4hTjEnMJ4yuVfyDAGix6Jq6ZWMh59LLGuP9__2huiEb9KGPOsuc58M9mzXp54wV4yfQUcotn7h0H5XIYRMdfPXXqrtEJIS1e7XPjbZ-EdgOWMb36_f2T-yqcOQALw28m9tUEIKraA6xV9EN_0-wQX-K-RHGekPhvzPnbL2fWa1nNUey5kyLU4OIDj2lLnavRJBzCNTL6_e_19POtKnu-TVwjN-laR3Kqymmj41ZcG6rM-b_mN05wdTrjV-qx3Ml1zVEb_tXAu_ewkKMVp6-S_3H2_QxEH4Sqj_sxB8beaPJdv95aXLmlH-6ho4E2UJJ2WHsVSl73LYaPpsqKOKd_py4052VRiY7tnPOgq3adfdPiq56t8a-dRBhLmjDpnVI_EiAMdTAXCYR_nPtlOpGDL175ohWFS2YP04dtZNARwNT0gk0weF7UrZAO0VcBfI4ZG-WmQ_spiMdy4UADx_WIOxjKUEgT2MnukFdW-OanljC_BgWehlNPG7rduYuQeZ36AVBE4rQCMVBhGQVrzoW6clGaNqxFkPX4AS_ky27M3qbG1quVjhxukQCp3cWciaItRtmWHiaNFWLM5mHGRjHd7BnZfiZda3A-ccBzMpQDWjAQRA',
+                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI4MTUyMTYsImV4cCI6MTU3MjgxODgxNiwicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.W3mdHO_o4RQJl8itQGLsrqBXk7Ki4oq2r4477psRp4YncLOjen9-mdGOUa8LpcnKohRZkB1gTOWijzWvIcUj3mGFEWNXIaqb79qst3CFNIsfR8DmYrMB6r98YD7oBho7w50QX3e7f6aCDEq6ZkuR3W7JCAO9KoZgrTHz5lDz7bMEMcEPfRQEtb2v8cqsdfWK9iNBiu7bLCyvkWbD0JbkN0R3ErY287K5QH3DZWDHqvofM-K7ACTfvHHyccG2YLOoCIVkjWhN6pZrzTbQJ3TIo7XVBx8ho6XVYjvO2TdG4EGgqJWhKkmcJyhIAkprkYI9_mrWh4tNikwsKAQV2S7CAIgFK7Qrg5vKDHtB91qRZrNFQJGpr3Cd8OHk-Li6Fzjs3bVVLEh0nD1C-Vjo64ns3SfZEcw2OxKDalDnAMspPfEEQ6ZbuLc7mCfs7s6Oo8r99kF97bkuh3RDjR3HvRPtGEjeuxLUeiKgroJCioaBGx4gW598b5cDWgOcfR2XK7UhEB3A2NsxD4XXGrd-o2uIaclg36tE3vLNqmfeuowwCUCKOAtStMt7wcZG0E0lOejb3c0B4-LxCLPvFJW14cd_bZ4NyTekdSmFilKLvPmmUmZghNoiwxtnzMR0ZZsRieP37UDnVTCdheow5mlrP9lMkL4268Dn1AD4aFD9XlpnepM',
             }
-        }).then(x => x.status).then(status => {              
+        }).then(x => x.status).then(status => {             
                 return status;
             });
     },
@@ -32,7 +32,7 @@ const NetworkService = {
             headers: { 
                  accept: 'application/json',
                 'content-type':'multipart/form-data',          
-                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI3OTk4MDksImV4cCI6MTU3MjgwMzQwOSwicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.MdCQs5YfrbrM49v_zXfg6XKnwPnmTMotm_40B2KDICkIEgIlvBjOBPKye63ji4hTjEnMJ4yuVfyDAGix6Jq6ZWMh59LLGuP9__2huiEb9KGPOsuc58M9mzXp54wV4yfQUcotn7h0H5XIYRMdfPXXqrtEJIS1e7XPjbZ-EdgOWMb36_f2T-yqcOQALw28m9tUEIKraA6xV9EN_0-wQX-K-RHGekPhvzPnbL2fWa1nNUey5kyLU4OIDj2lLnavRJBzCNTL6_e_19POtKnu-TVwjN-laR3Kqymmj41ZcG6rM-b_mN05wdTrjV-qx3Ml1zVEb_tXAu_ewkKMVp6-S_3H2_QxEH4Sqj_sxB8beaPJdv95aXLmlH-6ho4E2UJJ2WHsVSl73LYaPpsqKOKd_py4052VRiY7tnPOgq3adfdPiq56t8a-dRBhLmjDpnVI_EiAMdTAXCYR_nPtlOpGDL175ohWFS2YP04dtZNARwNT0gk0weF7UrZAO0VcBfI4ZG-WmQ_spiMdy4UADx_WIOxjKUEgT2MnukFdW-OanljC_BgWehlNPG7rduYuQeZ36AVBE4rQCMVBhGQVrzoW6clGaNqxFkPX4AS_ky27M3qbG1quVjhxukQCp3cWciaItRtmWHiaNFWLM5mHGRjHd7BnZfiZda3A-ccBzMpQDWjAQRA',
+                Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9.eyJpYXQiOjE1NzI4MTUyMTYsImV4cCI6MTU3MjgxODgxNiwicm9sZXMiOlt7fSx7fV0sInVzZXJuYW1lIjoicmFzaG1pYyJ9.W3mdHO_o4RQJl8itQGLsrqBXk7Ki4oq2r4477psRp4YncLOjen9-mdGOUa8LpcnKohRZkB1gTOWijzWvIcUj3mGFEWNXIaqb79qst3CFNIsfR8DmYrMB6r98YD7oBho7w50QX3e7f6aCDEq6ZkuR3W7JCAO9KoZgrTHz5lDz7bMEMcEPfRQEtb2v8cqsdfWK9iNBiu7bLCyvkWbD0JbkN0R3ErY287K5QH3DZWDHqvofM-K7ACTfvHHyccG2YLOoCIVkjWhN6pZrzTbQJ3TIo7XVBx8ho6XVYjvO2TdG4EGgqJWhKkmcJyhIAkprkYI9_mrWh4tNikwsKAQV2S7CAIgFK7Qrg5vKDHtB91qRZrNFQJGpr3Cd8OHk-Li6Fzjs3bVVLEh0nD1C-Vjo64ns3SfZEcw2OxKDalDnAMspPfEEQ6ZbuLc7mCfs7s6Oo8r99kF97bkuh3RDjR3HvRPtGEjeuxLUeiKgroJCioaBGx4gW598b5cDWgOcfR2XK7UhEB3A2NsxD4XXGrd-o2uIaclg36tE3vLNqmfeuowwCUCKOAtStMt7wcZG0E0lOejb3c0B4-LxCLPvFJW14cd_bZ4NyTekdSmFilKLvPmmUmZghNoiwxtnzMR0ZZsRieP37UDnVTCdheow5mlrP9lMkL4268Dn1AD4aFD9XlpnepM',
             }
         }).then(x => x).then(status => {             
               return status;
